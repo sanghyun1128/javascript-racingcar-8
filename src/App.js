@@ -1,5 +1,8 @@
 class App {
-  async run() {}
+  static async run() {
+    try {
+    } catch (error) {}
+  }
 }
 
 export default App;
