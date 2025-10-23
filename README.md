@@ -21,9 +21,11 @@
 6. class IOManager
    - getString() : 문자열 입력 받기
    - getNumber() : 숫자 입력 받기
+   - printEmptyLine() : 빈 줄 출력
    - printRequestNames() : 이름 요청 문자열 출력
    - printRequestNumOfRounds() : 라운드 요청 문자열 출력
    - printWinner(name[]) : 승자 출력
+   - printResultHeader() : 실행 결과 헤더 출력
    - printRoundResult(result) : 각 라운드 결과 출력
    - setErrorMessage(error) : 에러메시지 설정
 7. class StringUtil
