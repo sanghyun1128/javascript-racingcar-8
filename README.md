@@ -7,11 +7,10 @@
 3. 프로그램에서 사용할 상수들 생성
 4. class 별로 테스트 케이스 작성, 함수별로 파일 분리
    - Validator
-   - IOManager
    - StringUtil
    - Car
    - RaceManager
-   - Application
+   - IOManager
 5. class Validator
    - validateString(string) : 문자열 검증
    - validateNumber(number) : 숫자 검증
@@ -38,7 +37,9 @@
    - moveForward() : 앞으로 이동 명령
 9. class RaceManager
    - constructor(numOfRounds)
+   - getNumOfRounds() : 진행할 라운드 수 가져오기
    - addParticipant(name) : 참가자 추가
+   - getParticipants() : 참가자 목록 가져오기
    - startRace() : 레이스 시작
    - runRound() : 라운드 진행
    - addRoundResult(result) : 라운드 결과 추가
@@ -50,6 +51,8 @@
 
 ## 고려사항
 
+- 모든 입력에 trim 적용
+- 이름에 영어, 한글, 숫자, 공백 만 허용
 - 적절한 형식의 입력이 들어 왔는가
 - 참가자 수가 2 ~ 50 을 만족 하는가
 - 라운드 수가 1 ~ 100 을 만족 하는가
