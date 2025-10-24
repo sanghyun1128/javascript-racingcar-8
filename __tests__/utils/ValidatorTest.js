@@ -81,13 +81,13 @@ describe('참가자 수 검증 로직 테스트', () => {
   });
 
   test.each([
-    [LIMIT_VALUES.MIN_PARTICIPANT - 1, ERROR_MESSAGES.MIN_PARTICIPANT],
-    [LIMIT_VALUES.MAX_PARTICIPANT + 1, ERROR_MESSAGES.MAX_PARTICIPANT],
+    [LIMIT_VALUES.MIN_PARTICIPANTS - 1, ERROR_MESSAGES.MIN_PARTICIPANTS],
+    [LIMIT_VALUES.MAX_PARTICIPANTS + 1, ERROR_MESSAGES.MAX_PARTICIPANTS],
   ])('허용되지 않는 수의 참가자 입력시 에러 발생', (input, errorMessage) => {
     expect(() => Validator.validateNumOfParticipants(input)).toThrow(errorMessage);
   });
 
-  test.each([[LIMIT_VALUES.MIN_PARTICIPANT, LIMIT_VALUES.MAX_PARTICIPANT]])(
+  test.each([[LIMIT_VALUES.MIN_PARTICIPANTS, LIMIT_VALUES.MAX_PARTICIPANTS]])(
     '참가자 수 경계값 입력시 정상 처리',
     (input) => {
       expect(() => Validator.validateNumOfParticipants(input)).not.toThrow();
@@ -101,13 +101,13 @@ describe('라운드 수 입력 검증 로직 테스트', () => {
   });
 
   test.each([
-    [LIMIT_VALUES.MIN_ROUND - 1, ERROR_MESSAGES.MIN_ROUND],
-    [LIMIT_VALUES.MAX_ROUND + 1, ERROR_MESSAGES.MAX_ROUND],
+    [LIMIT_VALUES.MIN_ROUNDS - 1, ERROR_MESSAGES.MIN_ROUNDS],
+    [LIMIT_VALUES.MAX_ROUNDS + 1, ERROR_MESSAGES.MAX_ROUNDS],
   ])('허용되지 않는 수의 라운드 수 입력시 에러 발생', (input, errorMessage) => {
     expect(() => Validator.validateNumOfRounds(input)).toThrow(errorMessage);
   });
 
-  test.each([[LIMIT_VALUES.MIN_ROUND, LIMIT_VALUES.MAX_ROUND]])(
+  test.each([[LIMIT_VALUES.MIN_ROUNDS, LIMIT_VALUES.MAX_ROUNDS]])(
     '라운드 수 경계값 입력시 정상 처리',
     (input) => {
       expect(() => Validator.validateNumOfRounds(input)).not.toThrow();
