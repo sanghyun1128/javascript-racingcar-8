@@ -6,14 +6,14 @@ import DEFAULT_VALUES from '../consts/default_values.js';
 
 class IOManager {
   static async getString() {
-    const string = await MissionUtils.Console.readLineAsync();
+    const string = await MissionUtils.Console.readLineAsync('');
     Validator.validateString(string);
 
     return string.trim();
   }
 
   static async getNumber() {
-    const number = await MissionUtils.Console.readLineAsync();
+    const number = await MissionUtils.Console.readLineAsync('');
     Validator.validateNumber(number);
 
     return Number(number.trim());
@@ -28,7 +28,7 @@ class IOManager {
   }
 
   static printEmptyLine() {
-    MissionUtils.Console.print('\n');
+    MissionUtils.Console.print('');
   }
 
   static printResultHeader() {
@@ -44,7 +44,7 @@ class IOManager {
   static printRoundResult(roundResult) {
     roundResult.forEach((e) => {
       MissionUtils.Console.print(
-        `${e.name}${MESSAGES.SEPARATOR}${MESSAGES.PROGRESS_INDICATOR.repeat(e.position)}}`,
+        `${e.name}${MESSAGES.SEPARATOR}${MESSAGES.PROGRESS_INDICATOR.repeat(e.position)}`,
       );
     });
   }
