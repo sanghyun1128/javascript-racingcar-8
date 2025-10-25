@@ -48,17 +48,35 @@ describe('숫자 검증 로직 테스트', () => {
   );
 });
 
+describe('중복 검사 로직 테스트', () => {
+  test('중복 없을 경우', () => {
+    const input = ['1', '2', '3'];
+
+    expect(() => Validator.validateNoDuplicates(input)).not.toThrow();
+  });
+
+  test('중복 있을 경우 에러 발생', () => {
+    const input = ['1', '2', '2'];
+
+    expect(() => Validator.validateNoDuplicates(input)).toThrow(ERROR_MESSAGES.DUPLICATE_NAME);
+  });
+});
+
 describe('이름 형식 검증 로직 테스트', () => {
-  test.each([['asdfg', 'asd 1', '가ㄴㄷ', '1234']])('허용되는 입력', (input) => {
+  test.each([['asdfg'], ['asd 1'], ['가ㄴㄷ'], ['1234']])('허용되는 입력', (input) => {
     expect(() => Validator.validateName(input)).not.toThrow();
   });
 
-  test.each([['asdf*', '!', '@', '\\']])(
+  test.each([['asdf*'], ['!'], ['@'], ['\\']])(
     '영어, 한글, 숫자, 공백 이외의 문자 입력시 에러 발생',
     (input) => {
       expect(() => Validator.validateName(input)).toThrow(ERROR_MESSAGES.NOT_ALLOWED_CHARACTER);
     },
   );
+
+  test.each([['']])('공백 입력시 에러 발생', (input) => {
+    expect(() => Validator.validateName(input)).toThrow(ERROR_MESSAGES.EMPTY_NAME);
+  });
 
   test.each([[`${'a'.repeat(LIMIT_VALUES.MAX_NAME_LENGTH + 1)}`]])(
     '허용 길이를 초과 할 때 에러 발생',
