@@ -29,6 +29,7 @@ describe('위치 테스트', () => {
   });
 
   test('전진 후 위치 가져오기', () => {
+    mockRandoms([DEFAULT_VALUES.MOVE_FORWARD_THRESHOLD]);
     const car = new Car('pobi');
     car.moveForward();
 
@@ -40,17 +41,17 @@ describe('자동차 랜덤 전진 테스트', () => {
   test('전진하는 경우', () => {
     mockRandoms([DEFAULT_VALUES.MOVE_FORWARD_THRESHOLD]);
     const car = new Car('pobi');
-    const willMove = car.decideMovement();
+    car.moveForward();
 
-    expect(willMove).toBe(true);
+    expect(car.getPosition()).toBe(1);
   });
 
   test('전진하지 않는 경우', () => {
     mockRandoms([DEFAULT_VALUES.MOVE_FORWARD_THRESHOLD - 1]);
     const car = new Car('pobi');
-    const willMove = car.decideMovement();
+    car.moveForward();
 
-    expect(willMove).toBe(false);
+    expect(car.getPosition()).toBe(0);
   });
 
   test('경계값 일 경우', () => {
@@ -59,9 +60,11 @@ describe('자동차 랜덤 전진 테스트', () => {
       DEFAULT_VALUES.MOVE_FORWARD_THRESHOLD, // 전진함
     ]);
     const carA = new Car('a');
-    expect(carA.decideMovement()).toBe(false);
+    carA.moveForward();
+    expect(carA.getPosition()).toBe(0);
 
     const carB = new Car('b');
-    expect(carB.decideMovement()).toBe(true);
+    carB.moveForward();
+    expect(carB.getPosition()).toBe(1);
   });
 });
