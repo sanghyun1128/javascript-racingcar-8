@@ -1,17 +1,72 @@
+import Car from './Car.js';
+
 class RaceManager {
-  constructor(numOfRounds) {}
+  constructor(numOfRounds) {
+    this.numOfRounds = numOfRounds;
+    this.roundResults = [];
+    this.participants = [];
+  }
 
-  addParticipant(name) {}
+  getNumOfRounds() {
+    return this.numOfRounds;
+  }
 
-  startRace() {}
+  addParticipant(name) {
+    const car = new Car(name);
+    this.participants.push(car);
+  }
 
-  runRound() {}
+  getParticipants() {
+    return this.participants;
+  }
 
-  addRoundResult() {}
+  startRace() {
+    for (let i = 0; i < this.numOfRounds; i += 1) {
+      this.runRound();
+      const roundResult = this.getCurrentPositions();
+      this.addRoundResult(roundResult);
+    }
+  }
 
-  getRoundResult() {}
+  runRound() {
+    this.participants.forEach((e) => e.moveForward());
+  }
 
-  retrieveWinners() {}
+  getCurrentPositions() {
+    const positions = [];
+
+    this.participants.forEach((e) => {
+      const positionInfo = {
+        name: e.getName(),
+        position: e.getPosition(),
+      };
+      positions.push(positionInfo);
+    });
+
+    return positions;
+  }
+
+  addRoundResult(roundResult) {
+    this.roundResults.push(roundResult);
+  }
+
+  getRoundResults() {
+    return this.roundResults;
+  }
+
+  retrieveWinners() {
+    const winners = [];
+    const finalResult = this.roundResults[this.roundResults.length - 1];
+
+    finalResult.sort((a, b) => b.position - a.position);
+
+    const winPosition = finalResult[0].position;
+    finalResult.forEach((e) => {
+      if (e.position === winPosition) winners.push(e.name);
+    });
+
+    return winners;
+  }
 }
 
 export default RaceManager;
