@@ -48,7 +48,7 @@ describe('Output 테스트', () => {
     const logSpy = getLogSpy();
     IOManager.printRequestNames();
 
-    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(output));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(output));
   });
 
   test('라운드 수 요청 출력', () => {
