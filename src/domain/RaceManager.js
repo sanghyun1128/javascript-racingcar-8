@@ -1,7 +1,9 @@
+import Validator from '../utils/Validator.js';
 import Car from './Car.js';
 
 class RaceManager {
   constructor(numOfRounds) {
+    Validator.validateNumOfParticipants(numOfRounds);
     this.numOfRounds = numOfRounds;
     this.roundResults = [];
     this.participants = [];
@@ -12,6 +14,7 @@ class RaceManager {
   }
 
   addParticipant(name) {
+    Validator.validateNumOfParticipants(this.participants.length + 1);
     const car = new Car(name);
     this.participants.push(car);
   }

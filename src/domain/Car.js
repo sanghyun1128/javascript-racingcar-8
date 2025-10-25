@@ -1,8 +1,11 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
+
+import Validator from '../utils/Validator.js';
 import DEFAULT_VALUES from '../consts/default_values.js';
 
 class Car {
   constructor(name) {
+    Validator.validateName(name);
     this.name = name;
     this.position = 0;
   }
