@@ -1,6 +1,6 @@
 const MESSAGES = {
-  REQUEST_NAMES: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n',
-  REQUEST_NUM_OF_ROUNDS: '시도할 횟수는 몇 회인가요?\n',
+  REQUEST_NAMES: '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)',
+  REQUEST_NUM_OF_ROUNDS: '시도할 횟수는 몇 회인가요?',
   RESULT_HEADER: '실행 결과',
   PROGRESS_INDICATOR: '-',
   SEPARATOR: ' : ',
