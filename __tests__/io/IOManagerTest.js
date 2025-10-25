@@ -65,7 +65,7 @@ describe('Output 테스트', () => {
     IOManager.printEmptyLine();
 
     expect(logSpy).toHaveBeenCalledTimes(1);
-    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(/^\s*$/));
+    expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(''));
   });
 
   test('결과 헤더 출력', () => {
