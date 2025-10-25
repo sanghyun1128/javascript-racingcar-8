@@ -114,13 +114,10 @@ describe('Output 테스트', () => {
 });
 
 describe('Error 테스트', () => {
-  test('에러 메시지 설정', () => {
+  test('에러 메시지 포맷 적용하기', () => {
     const errorMessage = 'asdf';
-    const error = new Error(errorMessage);
     const output = `${MESSAGES.ERROR_PREFIX}${MESSAGES.SEPARATOR}${errorMessage}`;
 
-    IOManager.setErrorMessageFormat(error);
-
-    expect(error.message).toBe(output);
+    expect(IOManager.applyErrorMessageFormat(errorMessage)).toBe(output);
   });
 });
