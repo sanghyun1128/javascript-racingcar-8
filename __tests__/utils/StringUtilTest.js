@@ -9,13 +9,13 @@ describe('splitByDefaultDelimiter 테스트', () => {
     [`aaa${D}${D}bbb`, ['aaa', '', 'bbb']],
     [`aaa${D}`, ['aaa', '']],
   ])('기본 동작', (input, output) => {
-    expect(() => StringUtil.splitByDefaultDelimiter(input)).toEqual(output);
+    expect(StringUtil.splitByDefaultDelimiter(input)).toEqual(output);
   });
 
   test.each([
     [` a aa   ${D}  sss ${D} ddd`, ['a aa', 'sss', 'ddd']],
     [`aaa${D}  ${D}bbb`, ['aaa', '', 'bbb']],
   ])('개별 항목 앞뒤 공백 처리', (input, output) => {
-    expect(() => StringUtil.splitByDefaultDelimiter(input)).toEqual(output);
+    expect(StringUtil.splitByDefaultDelimiter(input)).toEqual(output);
   });
 });
