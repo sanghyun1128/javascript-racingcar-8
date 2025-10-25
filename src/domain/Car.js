@@ -19,10 +19,10 @@ class Car {
   }
 
   moveForward() {
-    if (this.constructor.decideMovement()) this.position += 1;
+    if (Car.#decideMovement()) this.position += 1;
   }
 
-  static decideMovement() {
+  static #decideMovement() {
     const pickedNumber = MissionUtils.Random.pickNumberInRange(
       DEFAULT_VALUES.RANDOM_NUMBER_MIN,
       DEFAULT_VALUES.RANDOM_NUMBER_MAX,
