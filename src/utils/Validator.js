@@ -3,6 +3,10 @@ import LIMIT_VALUES from '../consts/limit_values.js';
 
 class Validator {
   static validateString(string) {
+    if (string == null || typeof string !== 'string') {
+      throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+    }
+
     const trimmedString = string.trim();
     const stringLength = trimmedString.length;
 
@@ -11,19 +15,31 @@ class Validator {
   }
 
   static validateNumber(number) {
+    if (number == null || typeof number !== 'string') {
+      throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+    }
+
     const trimmedNumber = number.trim();
 
     if (Number.isNaN(+trimmedNumber)) throw new Error(ERROR_MESSAGES.NOT_NUMBER);
     if (+trimmedNumber >= LIMIT_VALUES.MAX_SAFE_INTEGER) throw new Error(ERROR_MESSAGES.BIG_NUMBER);
   }
 
+  static validateNoDuplicates(array) {
+    const unique = new Set(array);
+    if (unique.size !== array.length) {
+      throw new Error(ERROR_MESSAGES.DUPLICATE_NAME);
+    }
+  }
+
   static validateName(name) {
     const trimmedName = name.trim();
+    const trimmedNameLength = trimmedName.length;
 
-    if (trimmedName.length > LIMIT_VALUES.MAX_NAME_LENGTH)
-      throw new Error(ERROR_MESSAGES.LONG_NAME);
+    if (trimmedNameLength === 0) throw new Error(ERROR_MESSAGES.EMPTY_NAME);
+    if (trimmedNameLength > LIMIT_VALUES.MAX_NAME_LENGTH) throw new Error(ERROR_MESSAGES.LONG_NAME);
 
-    const invalidCharRegex = /[^A-Za-z0-9\uAC00-\uD7A3\s]/;
+    const invalidCharRegex = /[^A-Za-z0-9\uAC00-\uD7A3\u3130-\u318F\s]/;
     if (invalidCharRegex.test(trimmedName)) throw new Error(ERROR_MESSAGES.NOT_ALLOWED_CHARACTER);
   }
 
