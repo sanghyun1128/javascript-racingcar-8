@@ -1,13 +1,33 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+import DEFAULT_VALUES from '../consts/default_values.js';
+
 class Car {
-  constructor(name) {}
+  constructor(name) {
+    this.name = name;
+    this.position = 0;
+  }
 
-  getName() {}
+  getName() {
+    return this.name;
+  }
 
-  getPosition() {}
+  getPosition() {
+    return this.position;
+  }
 
-  decideMovement() {}
+  moveForward() {
+    if (this.constructor.decideMovement()) this.position += 1;
+  }
 
-  moveForward() {}
+  static decideMovement() {
+    const pickedNumber = MissionUtils.Random.pickNumberInRange(
+      DEFAULT_VALUES.RANDOM_NUMBER_MIN,
+      DEFAULT_VALUES.RANDOM_NUMBER_MAX,
+    );
+
+    if (pickedNumber >= DEFAULT_VALUES.MOVE_FORWARD_THRESHOLD) return true;
+    return false;
+  }
 }
 
 export default Car;
