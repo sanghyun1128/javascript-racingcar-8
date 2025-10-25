@@ -7,7 +7,7 @@ const ERROR_MESSAGES = {
   BIG_NUMBER: '입력된 숫자가 너무 큽니다.',
   LONG_NAME: `이름은 ${LIMIT_VALUES.MAX_NAME_LENGTH}자를 넘으면 안됩니다.`,
   NOT_ALLOWED_CHARACTER: '영어, 한글, 숫자, 공백 이외의 문자를 이름으로 설정할 수 없습니다.',
-  EXIST_NAME: '겹치는 이름이 있습니다.',
+  DUPLICATE_NAME: '겹치는 이름이 있습니다.',
   EMPTY_NAME: '빈 이름이 있습니다.',
   MIN_PARTICIPANTS: `참가자는 ${LIMIT_VALUES.MIN_PARTICIPANTS}명 이상 이어야 합니다.`,
   MAX_PARTICIPANTS: `참가자는 ${LIMIT_VALUES.MIN_PARTICIPANTS}명을 넘으면 안됩니다.`,
